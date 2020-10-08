@@ -46,7 +46,7 @@ module.exports = {
           ctx.response.cookie("token", token, {
             httpOnly: true,
             maxAge: 1000 * 60 * 60 * 24 * 365,
-            SameSite:Strict
+            SameSite:"Strict"
           });
 
           return user;
