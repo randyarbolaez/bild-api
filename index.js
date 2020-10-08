@@ -34,6 +34,8 @@ server.express.use(async (req, res, next) => {
   next();
 });
 
+const PORT = process.env.PORT || 4000;
+
 server.start(
   {
     cors: {
@@ -41,5 +43,5 @@ server.start(
       origin: process.env.FRONTEND_URL,
     },
   },
-  () => console.log(`Server is running on http://localhost:4000`)
+  () => console.log(`Server is running on http://localhost:${PORT}`)
 );
