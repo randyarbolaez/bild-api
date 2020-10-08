@@ -34,7 +34,7 @@ server.express.use(async (req, res, next) => {
   next();
 });
 
-const PORT = process.env.PORT || 4000;
+let PORT = process.env.PORT || 4000;
 
 server.start(
   {
