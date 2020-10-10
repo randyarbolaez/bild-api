@@ -45,10 +45,16 @@ module.exports = {
 
           ctx.response.cookie("token", token, {
             httpOnly: true,
-            Secure: true,
             maxAge: 1000 * 60 * 60 * 24 * 365,
-            SameSite: "None",
+            sameSite: "None",
+            secure: true,
           });
+
+          console.log(
+            "ctx.response.cookie : ",
+            ctx.response,
+            " : sf,sdfkjnCOOLLOOC"
+          );
 
           return user;
         },
