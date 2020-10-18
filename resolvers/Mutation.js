@@ -95,7 +95,12 @@ module.exports = {
         type: "User",
         resolve: (_, args, ctx) => {
           // console.log(ctx.response, " ctx.response.cookie");
-          ctx.response.clearCookie("token", { path: "/" });
+          ctx.response.clearCookie("token", {
+            httpOnly: true,
+            path: "/",
+            sameSite: "none",
+            secure: true,
+          });
           // console.log(ctx.response.cookie("token"));
 
           // ctx.response.cookie("token", "loggedout", {
