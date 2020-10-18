@@ -94,8 +94,9 @@ module.exports = {
       t.field("signout", {
         type: "User",
         resolve: (_, args, ctx) => {
-          console.log(ctx.response, " ctx.response.cookie");
-          ctx.response.clearCookie("token");
+          // console.log(ctx.response, " ctx.response.cookie");
+          // ctx.response.clearCookie("token");
+          ctx.response.cookie("token", "loggedout");
           return { Message: "hello" };
         },
       });
