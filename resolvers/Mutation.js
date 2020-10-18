@@ -50,7 +50,7 @@ module.exports = {
             secure: true,
           });
 
-          console.log(ctx.response.cookie, " | ctx.response.cookie");
+          console.log(ctx.response, " | ctx.response.cookie");
 
           return user;
         },
