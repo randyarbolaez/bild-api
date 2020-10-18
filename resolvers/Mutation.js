@@ -1,4 +1,4 @@
-const { makeSchema, objectType, stringArg, ad } = require("@nexus/schema");
+const { makeSchema, objectType, stringArg } = require("@nexus/schema");
 
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
@@ -101,14 +101,6 @@ module.exports = {
             sameSite: "none",
             secure: true,
           });
-          // console.log(ctx.response.cookie("token"));
-
-          // ctx.response.cookie("token", "loggedout", {
-          //   httpOnly: true,
-          //   maxAge: 1000 * 60 * 60 * 24 * 365,
-          //   sameSite: "none",
-          //   secure: true,
-          // });
           return { Message: "hello" };
         },
       });

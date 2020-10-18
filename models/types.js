@@ -1,4 +1,4 @@
-const { objectType, subscriptionType } = require("@nexus/schema");
+const { objectType } = require("@nexus/schema");
 
 const Profile = objectType({
   name: "Profile",
@@ -53,18 +53,9 @@ const Comment = objectType({
   },
 });
 
-const NewComment = subscriptionType({
-  type: "Comment",
-  definition(t) {
-    // t.model.Comment();
-    t.model("Comment").content();
-  },
-});
-
 module.exports = {
   Profile,
   User,
   Post,
   Comment,
-  NewComment,
 };

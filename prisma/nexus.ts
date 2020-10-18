@@ -56,9 +56,6 @@ export interface NexusGenRootTypes {
     userId: string; // String!
   }
   Query: {};
-  Subscription: { // root type
-    content: string; // String!
-  }
   User: { // root type
     email: string; // String!
     id: string; // String!
@@ -115,9 +112,6 @@ export interface NexusGenFieldTypes {
     posts: NexusGenRootTypes['Post'][]; // [Post!]!
     user: NexusGenRootTypes['User'] | null; // User
   }
-  Subscription: { // field return type
-    content: string; // String!
-  }
   User: { // field return type
     comments: NexusGenRootTypes['Comment'][]; // [Comment!]!
     email: string; // String!
@@ -172,7 +166,7 @@ export interface NexusGenAbstractResolveReturnTypes {
 
 export interface NexusGenInheritedFields {}
 
-export type NexusGenObjectNames = "Comment" | "Mutation" | "Post" | "Profile" | "Query" | "Subscription" | "User";
+export type NexusGenObjectNames = "Comment" | "Mutation" | "Post" | "Profile" | "Query" | "User";
 
 export type NexusGenInputNames = "PostWhereUniqueInput";
 

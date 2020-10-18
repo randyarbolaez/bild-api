@@ -1,29 +1,17 @@
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
-const { GraphQLServer, PubSub } = require("graphql-yoga");
+const { GraphQLServer } = require("graphql-yoga");
 const { makeSchema } = require("@nexus/schema");
 const { nexusSchemaPrisma } = require("nexus-plugin-prisma/schema");
 const { Query } = require("./resolvers/Query");
 const { Mutation } = require("./resolvers/Mutation");
-const Subscription = require("./resolvers/Subscription");
-const { Profile, User, Post, Comment, NewComment } = require("./models/types");
-
-const pubsub = new PubSub();
+const { Profile, User, Post, Comment } = require("./models/types");
 
 module.exports = () => {
   return new GraphQLServer({
     schema: makeSchema({
-      types: [
-        Query,
-        Mutation,
-        Subscription,
-        Post,
-        User,
-        Profile,
-        Comment,
-        NewComment,
-      ],
+      types: [Query, Mutation, Post, User, Profile, Comment],
       plugins: [nexusSchemaPrisma({ experimentalCRUD: true })],
       outputs: {
         schema: __dirname + "/schema.graphql",
@@ -37,7 +25,6 @@ module.exports = () => {
       return {
         ...request,
         prisma,
-        pubsub,
       };
     },
   });

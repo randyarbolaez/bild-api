@@ -50,10 +50,6 @@ type Query {
   user: User
 }
 
-type Subscription {
-  content: String!
-}
-
 type User {
   comments: [Comment!]!
   email: String!
