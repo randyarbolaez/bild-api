@@ -50,12 +50,6 @@ module.exports = {
             secure: true,
           });
 
-          console.log(
-            "ctx.response.cookie : ",
-            ctx.response,
-            " : sf,sdfkjnCOOLLOOC OMGGJDKF"
-          );
-
           return user;
         },
       });
@@ -89,6 +83,8 @@ module.exports = {
           ctx.response.cookie("token", token, {
             httpOnly: true,
             maxAge: 1000 * 60 * 60 * 24 * 365,
+            sameSite: "none",
+            secure: true,
           });
 
           return user;
