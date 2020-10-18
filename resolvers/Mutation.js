@@ -96,7 +96,7 @@ module.exports = {
         resolve: (_, args, ctx) => {
           // console.log(ctx.response, " ctx.response.cookie");
           // ctx.response.clearCookie("token");
-          ctx.response.clearCookie("token", ".localhost.com", "/");
+          ctx.response.clearCookie("token");
           // ctx.response.cookie("token", "loggedout", {
           //   httpOnly: true,
           //   maxAge: 1000 * 60 * 60 * 24 * 365,
