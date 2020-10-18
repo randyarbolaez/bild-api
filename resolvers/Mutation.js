@@ -50,6 +50,8 @@ module.exports = {
             secure: true,
           });
 
+          console.log(ctx.response.cookie, " | ctx.response.cookie");
+
           return user;
         },
       });
@@ -95,8 +97,9 @@ module.exports = {
         type: "User",
         resolve: (_, args, ctx) => {
           // console.log(ctx.response, " ctx.response.cookie");
-          // ctx.response.clearCookie("token");
           ctx.response.clearCookie("token");
+          // console.log(ctx.response.cookie("token"));
+
           // ctx.response.cookie("token", "loggedout", {
           //   httpOnly: true,
           //   maxAge: 1000 * 60 * 60 * 24 * 365,
