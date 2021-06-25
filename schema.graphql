@@ -53,6 +53,7 @@ type Query {
 type User {
   comments: [Comment!]!
   email: String!
+  followers: [User!]!
   id: String!
   name: String
   password: String!

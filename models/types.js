@@ -24,6 +24,9 @@ const User = objectType({
     t.model.comments({
       pagination: false,
     });
+    t.model.followers({
+      pagination: false,
+    });
     t.model.profile();
   },
 });

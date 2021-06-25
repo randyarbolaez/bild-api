@@ -115,6 +115,7 @@ export interface NexusGenFieldTypes {
   User: { // field return type
     comments: NexusGenRootTypes['Comment'][]; // [Comment!]!
     email: string; // String!
+    followers: NexusGenRootTypes['User'][]; // [User!]!
     id: string; // String!
     name: string | null; // String
     password: string; // String!
