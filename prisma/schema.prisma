@@ -28,7 +28,6 @@ model User {
   profile        Profile?
   followers      Profile[]  @relation("followers")
   following      Profile[]  @relation("following")
-  random         String?
   createdAt      DateTime   @default(now())
 }
 

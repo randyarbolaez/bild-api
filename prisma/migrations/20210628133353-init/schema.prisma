@@ -14,18 +14,21 @@ model Profile {
   userId            String   @unique
   user              User     @relation(fields: [userId], references: [id])
   createdAt         DateTime @default(now())
+  userFollowers     User @relation("followers", fields:[userId], references:[id])
+  userFollwing      User @relation("following", fields:[userId], references:[id])
 }
 
 model User {
-  id          String     @id @default(uuid())
-  name        String?
-  email       String
-  password    String
-  posts       Post[]
-  comments    Comment[]
-  profile     Profile?
-  followers   User[]
-  createdAt   DateTime   @default(now())
+  id             String     @id @default(uuid())
+  name           String?
+  email          String
+  password       String
+  posts          Post[]
+  comments       Comment[]
+  profile        Profile?
+  followers      Profile[]  @relation("followers")
+  following      Profile[]  @relation("following")
+  createdAt      DateTime   @default(now())
 }
 
 model Post {
