@@ -1,0 +1,160 @@
+{
+  "version": "0.3.14-fixed",
+  "steps": [
+    {
+      "tag": "CreateField",
+      "model": "Profile",
+      "field": "userFollowing",
+      "type": "User",
+      "arity": "List"
+    },
+    {
+      "tag": "CreateDirective",
+      "location": {
+        "path": {
+          "tag": "Field",
+          "model": "Profile",
+          "field": "userFollowing"
+        },
+        "directive": "relation"
+      }
+    },
+    {
+      "tag": "CreateArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "Profile",
+          "field": "userFollowing"
+        },
+        "directive": "relation"
+      },
+      "argument": "",
+      "value": "\"following\""
+    },
+    {
+      "tag": "DeleteField",
+      "model": "Profile",
+      "field": "userFollwing"
+    },
+    {
+      "tag": "UpdateField",
+      "model": "Profile",
+      "field": "userFollowers",
+      "arity": "List"
+    },
+    {
+      "tag": "DeleteArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "Profile",
+          "field": "userFollowers"
+        },
+        "directive": "relation"
+      },
+      "argument": "fields"
+    },
+    {
+      "tag": "DeleteArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "Profile",
+          "field": "userFollowers"
+        },
+        "directive": "relation"
+      },
+      "argument": "references"
+    },
+    {
+      "tag": "CreateField",
+      "model": "User",
+      "field": "userId",
+      "type": "String",
+      "arity": "Optional"
+    },
+    {
+      "tag": "CreateDirective",
+      "location": {
+        "path": {
+          "tag": "Field",
+          "model": "User",
+          "field": "userId"
+        },
+        "directive": "unique"
+      }
+    },
+    {
+      "tag": "UpdateField",
+      "model": "User",
+      "field": "followers",
+      "arity": "Optional"
+    },
+    {
+      "tag": "CreateArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "User",
+          "field": "followers"
+        },
+        "directive": "relation"
+      },
+      "argument": "fields",
+      "value": "[userId]"
+    },
+    {
+      "tag": "CreateArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "User",
+          "field": "followers"
+        },
+        "directive": "relation"
+      },
+      "argument": "references",
+      "value": "[id]"
+    },
+    {
+      "tag": "UpdateField",
+      "model": "User",
+      "field": "following",
+      "arity": "Optional"
+    },
+    {
+      "tag": "CreateArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "User",
+          "field": "following"
+        },
+        "directive": "relation"
+      },
+      "argument": "fields",
+      "value": "[userId]"
+    },
+    {
+      "tag": "CreateArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "User",
+          "field": "following"
+        },
+        "directive": "relation"
+      },
+      "argument": "references",
+      "value": "[id]"
+    }
+  ]
+}

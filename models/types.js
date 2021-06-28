@@ -8,10 +8,10 @@ const Profile = objectType({
     t.model.profilePicture();
     t.model.userId();
     t.model.user();
-    t.model.followers({
+    t.model.userFollowers({
       pagination: false,
     });
-    t.model.following({
+    t.model.userFollowing({
       pagination: false,
     });
   },
@@ -30,10 +30,10 @@ const User = objectType({
     t.model.comments({
       pagination: false,
     });
-    t.model.userFollowers({
+    t.model.followers({
       pagination: false,
     });
-    t.model.userFollowing({
+    t.model.following({
       pagination: false,
     });
     t.model.profile();
