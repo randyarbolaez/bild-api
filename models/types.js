@@ -27,6 +27,10 @@ const User = objectType({
     t.model.followers({
       pagination: false,
     });
+    // t.model.following({
+    //   pagination: false,
+    // });
+    t.model.random();
     t.model.profile();
   },
 });
