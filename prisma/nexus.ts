@@ -87,6 +87,7 @@ export interface NexusGenFieldTypes {
     createPost: NexusGenRootTypes['Post']; // Post!
     deleteComment: NexusGenRootTypes['Comment']; // Comment!
     deleteOnePost: NexusGenRootTypes['Post'] | null; // Post
+    followUser: NexusGenRootTypes['Profile']; // Profile!
     signin: NexusGenRootTypes['User']; // User!
     signout: NexusGenRootTypes['User']; // User!
     signup: NexusGenRootTypes['User']; // User!
@@ -104,6 +105,8 @@ export interface NexusGenFieldTypes {
     id: string; // String!
     profilePicture: string | null; // String
     user: NexusGenRootTypes['User']; // User!
+    userFollowers: NexusGenRootTypes['User'][]; // [User!]!
+    userFollowing: NexusGenRootTypes['User'][]; // [User!]!
     userId: string; // String!
   }
   Query: { // field return type
@@ -115,7 +118,8 @@ export interface NexusGenFieldTypes {
   User: { // field return type
     comments: NexusGenRootTypes['Comment'][]; // [Comment!]!
     email: string; // String!
-    followers: NexusGenRootTypes['User'][]; // [User!]!
+    followers: NexusGenRootTypes['Profile'] | null; // Profile
+    following: NexusGenRootTypes['Profile'] | null; // Profile
     id: string; // String!
     name: string | null; // String
     password: string; // String!
@@ -139,6 +143,10 @@ export interface NexusGenArgTypes {
     }
     deleteOnePost: { // args
       where: NexusGenInputs['PostWhereUniqueInput']; // PostWhereUniqueInput!
+    }
+    followUser: { // args
+      userThatFollowsId?: string | null; // String
+      userToFollowId?: string | null; // String
     }
     signin: { // args
       email?: string | null; // String

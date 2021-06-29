@@ -185,7 +185,7 @@
       "model": "Profile",
       "field": "userFollowers",
       "type": "User",
-      "arity": "Required"
+      "arity": "List"
     },
     {
       "tag": "CreateDirective",
@@ -213,39 +213,11 @@
       "value": "\"followers\""
     },
     {
-      "tag": "CreateArgument",
-      "location": {
-        "tag": "Directive",
-        "path": {
-          "tag": "Field",
-          "model": "Profile",
-          "field": "userFollowers"
-        },
-        "directive": "relation"
-      },
-      "argument": "fields",
-      "value": "[userId]"
-    },
-    {
-      "tag": "CreateArgument",
-      "location": {
-        "tag": "Directive",
-        "path": {
-          "tag": "Field",
-          "model": "Profile",
-          "field": "userFollowers"
-        },
-        "directive": "relation"
-      },
-      "argument": "references",
-      "value": "[id]"
-    },
-    {
       "tag": "CreateField",
       "model": "Profile",
-      "field": "userFollwing",
+      "field": "userFollowing",
       "type": "User",
-      "arity": "Required"
+      "arity": "List"
     },
     {
       "tag": "CreateDirective",
@@ -253,7 +225,7 @@
         "path": {
           "tag": "Field",
           "model": "Profile",
-          "field": "userFollwing"
+          "field": "userFollowing"
         },
         "directive": "relation"
       }
@@ -265,40 +237,12 @@
         "path": {
           "tag": "Field",
           "model": "Profile",
-          "field": "userFollwing"
+          "field": "userFollowing"
         },
         "directive": "relation"
       },
       "argument": "",
       "value": "\"following\""
-    },
-    {
-      "tag": "CreateArgument",
-      "location": {
-        "tag": "Directive",
-        "path": {
-          "tag": "Field",
-          "model": "Profile",
-          "field": "userFollwing"
-        },
-        "directive": "relation"
-      },
-      "argument": "fields",
-      "value": "[userId]"
-    },
-    {
-      "tag": "CreateArgument",
-      "location": {
-        "tag": "Directive",
-        "path": {
-          "tag": "Field",
-          "model": "Profile",
-          "field": "userFollwing"
-        },
-        "directive": "relation"
-      },
-      "argument": "references",
-      "value": "[id]"
     },
     {
       "tag": "CreateModel",
@@ -385,6 +329,13 @@
     {
       "tag": "CreateField",
       "model": "User",
+      "field": "userId",
+      "type": "String",
+      "arity": "Optional"
+    },
+    {
+      "tag": "CreateField",
+      "model": "User",
       "field": "profile",
       "type": "Profile",
       "arity": "Optional"
@@ -394,7 +345,7 @@
       "model": "User",
       "field": "followers",
       "type": "Profile",
-      "arity": "List"
+      "arity": "Optional"
     },
     {
       "tag": "CreateDirective",
@@ -422,11 +373,39 @@
       "value": "\"followers\""
     },
     {
+      "tag": "CreateArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "User",
+          "field": "followers"
+        },
+        "directive": "relation"
+      },
+      "argument": "fields",
+      "value": "[userId]"
+    },
+    {
+      "tag": "CreateArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "User",
+          "field": "followers"
+        },
+        "directive": "relation"
+      },
+      "argument": "references",
+      "value": "[id]"
+    },
+    {
       "tag": "CreateField",
       "model": "User",
       "field": "following",
       "type": "Profile",
-      "arity": "List"
+      "arity": "Optional"
     },
     {
       "tag": "CreateDirective",
@@ -452,6 +431,34 @@
       },
       "argument": "",
       "value": "\"following\""
+    },
+    {
+      "tag": "CreateArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "User",
+          "field": "following"
+        },
+        "directive": "relation"
+      },
+      "argument": "fields",
+      "value": "[userId]"
+    },
+    {
+      "tag": "CreateArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "User",
+          "field": "following"
+        },
+        "directive": "relation"
+      },
+      "argument": "references",
+      "value": "[id]"
     },
     {
       "tag": "CreateField",

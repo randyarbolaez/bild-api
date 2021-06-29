@@ -14,8 +14,8 @@ model Profile {
   userId            String   @unique
   user              User     @relation(fields: [userId], references: [id])
   createdAt         DateTime @default(now())
-  userFollowers         User[] @relation("followers")
-  userFollowing         User[] @relation("following")
+  userFollowers     User[] @relation("followers")
+  userFollowing     User[] @relation("following")
 }
 
 model User {
@@ -25,7 +25,7 @@ model User {
   password       String
   posts          Post[]
   comments       Comment[]
-  userId         String?   @unique
+  userId         String? 
   profile        Profile?
   followers      Profile?  @relation("followers", fields:[userId], references:[id])
   following      Profile?  @relation("following", fields:[userId], references:[id])

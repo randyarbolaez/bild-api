@@ -2,6 +2,7 @@ const { makeSchema, objectType, stringArg } = require("@nexus/schema");
 
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const { prisma } = require("nexus-plugin-prisma");
 require("dotenv").config();
 
 module.exports = {
@@ -155,6 +156,63 @@ module.exports = {
               id: commentId,
             },
           });
+        },
+      });
+
+      t.field("followUser", {
+        type: "Profile",
+        args: {
+          userToFollowId: stringArg(),
+          userThatFollowsId: stringArg(),
+        },
+        resolve: async (_, { userToFollowId, userThatFollowsId }, ctx) => {
+          // console.log(
+          //   { userThatFollowsId, userToFollowId },
+          //   ctx,
+          //   " | DSKFJHJKSDF"
+          // );
+
+          const res = ctx.prisma.profile.findOne({
+            where: {
+              userId: userThatFollowsId,
+            },
+          });
+
+          const UserToFollowRes = await ctx.prisma.user.findOne({
+            where: {
+              id: userToFollowId,
+            },
+          });
+
+          let expandedData = await res.userFollowing();
+
+          console.log(expandedData, "DSFJKSDJKFHJSKD");
+
+          // need to figure out a way to keep the user in userFollowing
+
+          return ctx.prisma.profile.update({
+            where: {
+              userId: userThatFollowsId,
+            },
+            data: {
+              userFollowing: {
+                set: expandedData,
+              },
+            },
+          });
+          // return updatedUser;
+          // return ctx.prisma.comment.create({
+          //   data: {
+          //     content,
+          //     post: {
+          //       connect: { id: postId },
+          //     },
+          //     user: {
+          //       connect: { id: ctx.request.userId },
+          //     },
+          //   },
+          // });
+          return { Message: userToFollowId };
         },
       });
     },

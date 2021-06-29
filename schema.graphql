@@ -17,6 +17,7 @@ type Mutation {
   createPost(caption: String, picture: String): Post!
   deleteComment(commentId: String): Comment!
   deleteOnePost(where: PostWhereUniqueInput!): Post
+  followUser(userThatFollowsId: String, userToFollowId: String): Profile!
   signin(email: String, password: String): User!
   signout: User!
   signup(bio: String, email: String, name: String, password: String, profilePicture: String): User!
@@ -40,6 +41,8 @@ type Profile {
   id: String!
   profilePicture: String
   user: User!
+  userFollowers: [User!]!
+  userFollowing: [User!]!
   userId: String!
 }
 
@@ -53,7 +56,8 @@ type Query {
 type User {
   comments: [Comment!]!
   email: String!
-  followers: [User!]!
+  followers: Profile
+  following: Profile
   id: String!
   name: String
   password: String!
